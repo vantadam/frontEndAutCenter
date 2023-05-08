@@ -11,19 +11,19 @@
      border-radius: 10px;
      margin-top: 10px;
     
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
      position: absolute;
      top: 50%;
      left: 50%;
      transform: translate(-50%, -50%);
  }
  .cardTitle{
-     margin-top:5px;
+     margin-top:10px;
      font-size:30px;
      font-weight: bold;
      color: #4b2354;
  }
- .input-field {
+ .input{
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
      width: 300px;
      height: 50px;
@@ -87,7 +87,7 @@
      margin-top:10px ;
  }
  .signUp{
-     margin-top: 110px;
+     margin-top: 15px;
      color: #4b2354;
      font-size: 15px;
  }
