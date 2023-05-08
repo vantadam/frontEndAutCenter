@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import jwtDecode from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 import axios from "axios";
 function SignInScreen() {
   const [inputs, setInputs] = useState({
@@ -13,20 +13,17 @@ function SignInScreen() {
     console.log(inputs);
     try {
       const res = await axios.post(
-        'http://localhost:8081/api/auth/authenticate',
+        "http://localhost:8080/api/auth/authenticate",
         inputs
       );
       console.log(res.data);
-      localStorage.setItem("refresh_token", JSON.stringify(res.data.refresh_token));
-     
-      const token = localStorage.getItem('refresh_token');
-const decodedToken = jwtDecode(token);
-const role = decodedToken;
+      localStorage.setItem("refresh_token", res.data.refresh_token);
 
-console.log(role)
-      
+      const token = localStorage.getItem("refresh_token");
+      const decodedToken = jwtDecode(token);
+      const role = decodedToken;
 
-
+      console.log(role);
     } catch (err) {
       console.log(err);
     }
