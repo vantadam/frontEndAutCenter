@@ -7,7 +7,7 @@
 }
 .signINcontainer{
     width: 400px;
-    height: 700px;
+    height: 800px;
     background-color: #fafafa;
     border-radius: 10px;
     margin-top: 10px;
@@ -46,6 +46,19 @@
 .button {
     background-color: #bd59d4;
     color: #ffffff;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left:120px;
+    margin-right: 120px;
+    padding: 15px;
+    font-size: small;
+    border-radius: 30px;
+    
+    box-shadow: 0px 10px 10px 5px rgba(152, 61, 137, 0.145);
+}
+.button2 {
+    background-color: #5a93c9d8;
+    color: #050505;
     font-weight: bold;
     margin-top: 20px;
     margin-left:120px;
