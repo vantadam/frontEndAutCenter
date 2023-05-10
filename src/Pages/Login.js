@@ -1,37 +1,29 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import jwtDecode from "jwt-decode";
-import axios from "axios";
+import { Authenticate } from "../API/Handler/AuthHandler";
+import { useNavigate } from 'react-router-dom';
+
+
+
 function SignInScreen() {
-  const [inputs, setInputs] = useState({
+
+  const navigate = useNavigate();
+
+
+
+  const [formValue, setformValue] = useState({
     email: "",
     password: "",
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
-    try {
-      const res = await axios.post(
-        "http://localhost:8090/api/auth/authenticate",
-        inputs
-      );
-      console.log(res.data);
-      localStorage.setItem("refresh_token", res.data.refresh_token);
+    Authenticate(formValue,navigate)
 
-      const token = localStorage.getItem("refresh_token");
-
-      const decodedToken = jwtDecode(token);
-      const role = decodedToken;
-
-      console.log(token);
-    } catch (err) {
-      console.log(err);
-    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInputs((prevState) => ({
+    setformValue((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -71,7 +63,7 @@ function SignInScreen() {
             variant="outlined"
             placeholder="Email"
             name="email"
-            value={inputs.email}
+            value={formValue.email}
             onChange={handleChange}
             required
           />
@@ -82,7 +74,7 @@ function SignInScreen() {
             variant="outlined"
             placeholder="password"
             name="password"
-            value={inputs.password}
+            value={formValue.password}
             required
           />
           <Button

@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Pages/Login";
 import ManageUser from "./Pages/Admin/ManageUser";
 import Home from "./Pages/Home";
-import Register from "./Pages/Register";
+import Register from "./Pages/Admin/Register";
 import ProfilePage from "./Pages/User/ProfilePage";
 import ChildListPage from "./Pages/Admin/ChildListPage";
 import RegisterChild from "./Pages/Admin/registerChild";
+import ListActivity from "./Pages/Admin/ListActivity";
+import RegisterUser from "./Pages/Admin/registerUser";
 function App() {
   return (
     <div className="App">
@@ -16,9 +18,12 @@ function App() {
           <Route path="/admin/manageUser" element={<ManageUser />} />
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/registeruser" element={<RegisterUser />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/children" element={<ChildListPage />} />
           <Route path="/registerchildren" element={<RegisterChild />} />
+          <Route path="/listactivity" element={<ListActivity />} />
+          
         </Routes>
       </Router>
     </div>
