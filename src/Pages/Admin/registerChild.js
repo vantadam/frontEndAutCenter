@@ -2,20 +2,26 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import axios from "axios";
-function Register() {
+function RegisterChild() {
   const [inputs, setInputs] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
+    name: "",
+    lastName: "",
+    age: "",
+    birthDate: "",
   });
+  const token = localStorage.getItem("refresh_token");
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
     try {
       const res = await axios.post(
-        "http://localhost:8090/api/auth/register",
-        inputs
+        "http://localhost:8090/api/responsable/registerChild",
+        inputs,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       console.log(res.data);
     } catch (err) {
@@ -50,16 +56,16 @@ function Register() {
           }}
         >
           <Typography variant="h2" padding={3} textAlign="center">
-            SignIn
+            Adding Child
           </Typography>
 
           <TextField
             margin="normal"
             type="textarea"
             variant="outlined"
-            placeholder="firstName"
-            name="firstname"
-            value={inputs.firstname}
+            placeholder="name"
+            name="name"
+            value={inputs.name}
             onChange={handleChange}
             required
           />
@@ -68,30 +74,30 @@ function Register() {
             type="textarea"
             variant="outlined"
             placeholder="Last name"
-            name="lastname"
-            value={inputs.lastname}
+            name="lastName"
+            value={inputs.lastName}
             onChange={handleChange}
             required
           />
 
           <TextField
             margin="normal"
-            type="email"
+            type="number"
             variant="outlined"
-            placeholder="Email"
-            name="email"
-            value={inputs.email}
+            placeholder="age"
+            name="age"
+            value={inputs.age}
             onChange={handleChange}
             required
           />
           <TextField
             margin="normal"
             onChange={handleChange}
-            type="password"
+            type="date"
             variant="outlined"
-            placeholder="password"
-            name="password"
-            value={inputs.password}
+            // placeholder="birthDate"
+            name="birthDate"
+            value={inputs.birthDate}
             required
           />
           <Button
@@ -101,7 +107,7 @@ function Register() {
             color="success"
             sx={{ marginTop: 3, borderRadius: 4 }}
           >
-            SignIn
+            add
           </Button>
         </Box>
       </form>
@@ -109,4 +115,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterChild;

@@ -13,17 +13,18 @@ function SignInScreen() {
     console.log(inputs);
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/auth/authenticate",
+        "http://localhost:8090/api/auth/authenticate",
         inputs
       );
       console.log(res.data);
       localStorage.setItem("refresh_token", res.data.refresh_token);
 
       const token = localStorage.getItem("refresh_token");
+
       const decodedToken = jwtDecode(token);
       const role = decodedToken;
 
-      console.log(role);
+      console.log(token);
     } catch (err) {
       console.log(err);
     }

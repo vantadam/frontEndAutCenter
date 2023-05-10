@@ -2,23 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const ProfilePage = () => {
-  const [user, setUser] = useState({});
-  const [group, setGroup] = useState({});
-  const [children, setChildren] = useState([]);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
-    const url = "http://localhost:8080/api/auth/CurrentAuthent";
     const token = localStorage.getItem("refresh_token");
     axios
-      .get("http://localhost:8080/api/responsable/listUser", {
+      .get("http://localhost:8090/api/responsable/CurrentAuthent", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
-        // setUser(response.data.firstName, response.data.lastName);
-        // setGroup(response.data.group);
-        // setChildren(response.data.children);
+        setUser(response.data.firstName);
         console.log(response.data);
       })
       .catch((error) => {
@@ -28,13 +23,9 @@ const ProfilePage = () => {
 
   return (
     <div>
-      {/* <h1>Welcome, {user.firstName} </h1> */}
-      {/* <h2>Your Group: {group}</h2> */}
-      {/* <ul>
-        {children.map((child) => (
-          <li key={child.id}>{child.name}</li>
-        ))}
-      </ul> */}
+      <h1>
+        Welcome, {user} !
+      </h1>
     </div>
   );
 };
