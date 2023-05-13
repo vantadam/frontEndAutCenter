@@ -38,23 +38,7 @@ function RegisterChild() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Box
-          display="flex"
-          flexDirection={"column"}
-          maxWidth={400}
-          alignItems="center"
-          justifyContent={"center"}
-          margin="auto"
-          marginTop={"15%"}
-          padding={3}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px #ccc"}
-          sx={{
-            ":hover": {
-              boxShadow: "10px 10px 20px #ccc",
-            },
-          }}
-        >
+
           <Typography variant="h2" padding={3} textAlign="center">
             Adding Child
           </Typography>
@@ -68,9 +52,9 @@ function RegisterChild() {
             value={inputs.name}
             onChange={handleChange}
             required
-          />
+          /><br/>
           <TextField
-            margin="Last name"
+            margin="normal"
             type="textarea"
             variant="outlined"
             placeholder="Last name"
@@ -78,7 +62,7 @@ function RegisterChild() {
             value={inputs.lastName}
             onChange={handleChange}
             required
-          />
+          /><br/>
 
           <TextField
             margin="normal"
@@ -89,7 +73,7 @@ function RegisterChild() {
             value={inputs.age}
             onChange={handleChange}
             required
-          />
+          /><br/>
           <TextField
             margin="normal"
             onChange={handleChange}
@@ -99,7 +83,7 @@ function RegisterChild() {
             name="birthDate"
             value={inputs.birthDate}
             required
-          />
+          /><br/>
           <Button
             endIcon={<ExitToAppIcon />}
             type="submit"
@@ -109,7 +93,7 @@ function RegisterChild() {
           >
             add
           </Button>
-        </Box>
+       
       </form>
     </div>
   );

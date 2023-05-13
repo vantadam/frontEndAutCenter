@@ -32,25 +32,9 @@ function Register() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Box
-          display="flex"
-          flexDirection={"column"}
-          maxWidth={400}
-          alignItems="center"
-          justifyContent={"center"}
-          margin="auto"
-          marginTop={"15%"}
-          padding={3}
-          borderRadius={5}
-          boxShadow={"5px 5px 10px #ccc"}
-          sx={{
-            ":hover": {
-              boxShadow: "10px 10px 20px #ccc",
-            },
-          }}
-        >
-          <Typography variant="h2" padding={3} textAlign="center">
-            SignIn
+
+          <Typography variant="h2" padding={4} textAlign="center">
+            Register admin
           </Typography>
 
           <TextField
@@ -62,9 +46,9 @@ function Register() {
             value={inputs.firstname}
             onChange={handleChange}
             required
-          />
+          /><br/>
           <TextField
-            margin="Last name"
+            margin="normal"
             type="textarea"
             variant="outlined"
             placeholder="Last name"
@@ -72,7 +56,7 @@ function Register() {
             value={inputs.lastname}
             onChange={handleChange}
             required
-          />
+          /><br/>
 
           <TextField
             margin="normal"
@@ -83,7 +67,7 @@ function Register() {
             value={inputs.email}
             onChange={handleChange}
             required
-          />
+          /><br/>
           <TextField
             margin="normal"
             onChange={handleChange}
@@ -94,6 +78,7 @@ function Register() {
             value={inputs.password}
             required
           />
+          <br/>
           <Button
             endIcon={<ExitToAppIcon />}
             type="submit"
@@ -103,7 +88,7 @@ function Register() {
           >
             SignIn
           </Button>
-        </Box>
+
       </form>
     </div>
   );

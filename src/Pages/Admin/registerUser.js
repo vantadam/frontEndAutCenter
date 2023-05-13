@@ -39,25 +39,9 @@ function RegisterUser() {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <Box
-            display="flex"
-            flexDirection={"column"}
-            maxWidth={400}
-            alignItems="center"
-            justifyContent={"center"}
-            margin="auto"
-            marginTop={"15%"}
-            padding={3}
-            borderRadius={5}
-            boxShadow={"5px 5px 10px #ccc"}
-            sx={{
-              ":hover": {
-                boxShadow: "10px 10px 20px #ccc",
-              },
-            }}
-          >
+
             <Typography variant="h2" padding={3} textAlign="center">
-              Add
+              Register Manger
             </Typography>
   
             <TextField
@@ -69,9 +53,9 @@ function RegisterUser() {
               value={inputs.firstname}
               onChange={handleChange}
               required
-            />
+            /><br/>
             <TextField
-              margin="Last name"
+              margin="normal"
               type="textarea"
               variant="outlined"
               placeholder="Last name"
@@ -79,7 +63,7 @@ function RegisterUser() {
               value={inputs.lastname}
               onChange={handleChange}
               required
-            />
+            /><br/>
   
             <TextField
               margin="normal"
@@ -90,7 +74,7 @@ function RegisterUser() {
               value={inputs.email}
               onChange={handleChange}
               required
-            />
+            /><br/>
             <TextField
               margin="normal"
               onChange={handleChange}
@@ -100,7 +84,7 @@ function RegisterUser() {
               name="password"
               value={inputs.password}
               required
-            />
+            /><br/>
             <Button
               endIcon={<ExitToAppIcon />}
               type="submit"
@@ -110,7 +94,7 @@ function RegisterUser() {
             >
               SignIn
             </Button>
-          </Box>
+
         </form>
       </div>
     );
