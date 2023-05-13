@@ -4,70 +4,63 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 
 function ListActivity() {
-    const [activity, setActivity] = useState([]);
-    const [ref,refrech] = useState([]);
+  const [activity, setActivity] = useState([]);
+  const [ref, refrech] = useState([]);
+  const token = localStorage.getItem("refresh_token");
+  useEffect(() => {
+    axios
+      .get("http://localhost:8090/api/responsable/listActivity", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setActivity(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const delacti = async (id) => {
     const token = localStorage.getItem("refresh_token");
-    useEffect(() => {
-      axios
-        .get("http://localhost:8090/api/responsable/listActivity", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-            setActivity(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, []);
-
-    const delacti = async(id) =>  {
-      const token = localStorage.getItem("refresh_token");
-      const res = await axios.delete(`http://localhost:8090/api/responsable/deleteActivity/${id}`,
+    const res = await axios.delete(`http://localhost:8090/api/responsable/deleteActivity/${id}`,
       {
-              headers: {
-                  Authorization: `Bearer ${token}`,
-              },
-          });
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-          refrech();
+    refrech();
 
   }
 
   return (
-        <Table striped bordered hover>
+    <Table striped bordered hover variant="dark">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
+          <th style={{display : "none"}}>ID</th>
           <th>Description</th>
           <th>Starting Date</th>
           <th>Ending Date</th>
           <th>Created At</th>
           <th>Updated At</th>
-          <th>Group ID</th>
-          <th>Group Name</th>
-          <th>User ID</th>
-          <th>User Email</th>
+          <th>Group</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        {activity.map((item) => (
+        {activity.map(item => (
           <tr key={item.id}>
-            <td>{item.id}</td>
-            <td>{item.name}</td>
+            <td style={{display : "none"}}>{item.id}</td>
             <td>{item.description}</td>
             <td>{item.startingDate}</td>
             <td>{item.endingDate}</td>
             <td>{item.createdAt}</td>
             <td>{item.updatedAt}</td>
-            <td>{item.group.id}</td>
-            <td>{item.group.nameG}</td>
-            <td>{item.group.userG.id}</td>
-            <td>{item.group.userG.email}</td>
-            <td><Button variant="danger" onClick={()=>{delacti(item.id)}}>Delete</Button></td>
+            <td>{item.group?.nameG}</td>
+            <td><Button variant="danger" onClick={() => { delacti(item.id) }}>Delete</Button></td>
           </tr>
         ))}
       </tbody>

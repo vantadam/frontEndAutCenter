@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import RegisterChild from './registerChild'
-import ChildListPage from "./ChildListPage";
+import Addactivity from "./Addactivity";
+import ListActivity from "./ListActivity";
 import NavBar from './AdminNavbar'
 
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
 
-function Children() {
+function Activity() {
     const [checked, setChecked] = useState(1);
     const [radioValue, setRadioValue] = useState('1');
 
     const radios = [
-        { name: 'Children List', value: '1' },
-        { name: 'Add Child', value: '2' },
-        { name: 'Add child to group', value: '3' },
+        { name: 'List Activity', value: '1' },
+        { name: 'Add Acitivity', value: '2' },
+
 
     ];
 
@@ -25,7 +25,7 @@ function Children() {
             <NavBar />
             <br />
             <br />
-            <h1>Manag users</h1>
+            <h1>Manage Activity</h1>
             <br />
 
 
@@ -54,15 +54,14 @@ function Children() {
 
             <br />
             {checked == 1 ?
-                <ChildListPage />
-                : checked == 2 ?
-                    <RegisterChild />
-                    :
-                    <RegisterChild />}
+                <ListActivity />
+                :
+                <Addactivity />
+            }
 
 
         </div>
     )
 }
 
-export default Children
+export default Activity

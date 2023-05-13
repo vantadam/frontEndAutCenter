@@ -1,7 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form, FormControl, Button } from 'react-bootstrap';
+
 import axios from "axios";
 
 const AddChildToGroup = () => {
+
+  const handleChildSelect = (event) => {
+    setSelectedChild(event.target.value);
+  };
+
+  const handleGroupSelect = (event) => {
+    setSelectedGroup(event.target.value);
+  };
+
+
   const [child, setchild] = useState([]);
   const [groups, setGroups] = useState([]);
   const [selectedChild, setSelectedChild] = useState(null);
@@ -59,40 +72,45 @@ const AddChildToGroup = () => {
         }
       );
       setGroups(response.data);
+      console.log(response.data)
     } catch (error) {
       console.error("Error fetching groups:", error);
     }
   };
 
-  const handleChildClick = (ChildId) => {
-    setSelectedChild(ChildId);
-  };
 
-  const handleGroupClick = (groupId) => {
-    setSelectedGroup(groupId);
-  };
 
   return (
-    <div>
-      <h3>child:</h3>
-      <ul>
-        {child.map((Child) => (
-          <li key={Child.id} onClick={() => handleChildClick(Child.id)}>
-            {Child.name}
-          </li>
-        ))}
-      </ul>
+    <div style={{width:"500px",margin:"auto"}}>
+      <Form>
+        <Form.Group controlId="childSelect">
+          <Form.Label>Child:</Form.Label>
+          <FormControl as="select" onChange={handleChildSelect}>
+            <option value="">Select a child</option>
+            {child.map((child) => (
+              <option key={child.id} value={child.id}>
+                {child.name}
+              </option>
+            ))}
+          </FormControl>
+        </Form.Group>
 
-      <h3>Groups:</h3>
-      <ul>
-        {groups.map((group) => (
-          <li key={group.id} onClick={() => handleGroupClick(group.id)}>
-            {group.nameG}
-          </li>
-        ))}
-      </ul>
+        <Form.Group controlId="groupSelect">
+          <Form.Label>Groups:</Form.Label>
+          <FormControl as="select" onChange={handleGroupSelect}>
+            <option value="">Select a group</option>
+            {groups.map((group) => (
+              <option key={group.id} value={group.id}>
+                {group.nameG}
+              </option>
+            ))}
+          </FormControl>
+        </Form.Group>
 
-      <button onClick={handlePostRequest}>Add to Group</button>
+        <Button variant="primary" onClick={handlePostRequest}>
+          Add to Group
+        </Button>
+      </Form>
 
       {selectedChild && <p>Selected Child: {selectedChild}</p>}
       {selectedGroup && <p>Selected Group: {selectedGroup}</p>}

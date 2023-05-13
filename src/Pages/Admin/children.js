@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RegisterChild from './registerChild'
 import ChildListPage from "./ChildListPage";
+import AddChildToGroup from "./AddchildtoGroup";
 import NavBar from './AdminNavbar'
 
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -58,7 +59,7 @@ function Children() {
                 : checked == 2 ?
                     <RegisterChild />
                     :
-                    <RegisterChild />}
+                    <AddChildToGroup />}
 
 
         </div>

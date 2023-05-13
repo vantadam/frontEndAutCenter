@@ -40,8 +40,8 @@ const ChildListPage = () => {
 
 
   return (
-    <div>
-    <Navbar/>
+   
+    
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -54,6 +54,7 @@ const ChildListPage = () => {
           <th>Updated At</th>
           <th>Group</th>
           <th>Birth Date</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -73,7 +74,7 @@ const ChildListPage = () => {
         ))}
       </tbody>
     </Table>
-    </div>
+
   );
 };
 
