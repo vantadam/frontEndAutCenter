@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ChildCard from "./ChildCard";
 import { Navbar, Table } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import NavBar from "./AdminNavbar";
 
 const ListGroup = () => {
@@ -25,35 +25,29 @@ const ListGroup = () => {
       });
   }, []);
 
-
-
-
   return (
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
           <th>ID</th>
           <th>Group Name</th>
-          <th>Last Modified At</th>
+          <th>CreatedAt</th>
           <th>User ID</th>
           <th>User First Name</th>
           <th>User Last Name</th>
           <th>User Email</th>
-
         </tr>
       </thead>
       <tbody>
-        {group.map(item => (
+        {group.map((item) => (
           <tr key={item.id}>
             <td>{item.id}</td>
             <td>{item.nameG}</td>
-            <td>{item.lastModifiedAt ? item.lastModifiedAt : "-"}</td>
+            <td>{item.createdAt ? item.createdAt : "-"}</td>
             <td>{item.userG.id}</td>
             <td>{item.userG.firstName}</td>
             <td>{item.userG.lastName}</td>
             <td>{item.userG.email}</td>
-
-            
           </tr>
         ))}
       </tbody>
