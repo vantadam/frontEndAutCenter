@@ -19,6 +19,9 @@ import AddGroup from "./Pages/Admin/CreateGroup";
 import EmpGroup from "./Pages/User/empGroup";
 import EmpActivity from "./Pages/User/empActivity";
 import Empchild from "./Pages/User/empChild";
+import Listnote from "./Pages/Admin/Listenote";
+import AddNote from "./Pages/User/addNote";
+import Userchild from "./Pages/User/userchild";
 import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
@@ -30,11 +33,15 @@ function App() {
           <Route path="/admin/managechildren" element={<Children />} />
           <Route path="/admin/manageGroup" element={<Group />} />
           <Route path="/admin/manageActivity" element={<Activity />} />
+          <Route path="/admin/listnote" element={<Listnote />} />
 
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/groups" element={<EmpGroup />} />
           <Route path="/activity" element={<EmpActivity />} />
           <Route path="/child" element={<Empchild />} />
+          <Route path="/addnote" element={<AddNote />} />
+          <Route path="/specchild" element={<Userchild />} />
+          
 
           {
             //remove this

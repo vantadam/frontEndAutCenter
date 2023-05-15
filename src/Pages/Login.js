@@ -4,30 +4,31 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { Authenticate } from "../API/Handler/AuthHandler";
 import { useNavigate } from 'react-router-dom';
 
-
-
 function SignInScreen() {
-
   const navigate = useNavigate();
 
-
-
-  const [formValue, setformValue] = useState({
+  const [formValue, setFormValue] = useState({
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    Authenticate(formValue,navigate)
-
+    const response = await Authenticate(formValue, navigate);
+    if (response !== "OK") {
+      setError("Sign-in failed. Please check your credentials.");
+    }
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setformValue((prevState) => ({
+    setFormValue((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -48,12 +49,7 @@ function SignInScreen() {
             },
           }}
         >
-          <Typography
-            variant="h2"
-            padding={3}
-            textAlign="center
-        "
-          >
+          <Typography variant="h2" padding={3} textAlign="center">
             SignIn
           </Typography>
 
@@ -86,6 +82,11 @@ function SignInScreen() {
           >
             SignIn
           </Button>
+          {error && (
+            <Typography variant="body2" color="error" mt={2}>
+              {error}
+            </Typography>
+          )}
         </Box>
       </form>
     </div>

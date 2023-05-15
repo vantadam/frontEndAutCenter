@@ -13,6 +13,7 @@ function NavBar() {
             <Nav.Link href="managechildren">manage children</Nav.Link>
             <Nav.Link href="manageGroup">manage Groups</Nav.Link>
             <Nav.Link href="manageActivity">manage Activity</Nav.Link>
+            <Nav.Link href="listnote">List note</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="/login" onClick={()=>{localStorage.removeItem("refresh_token")}}>Disconnect</Nav.Link>

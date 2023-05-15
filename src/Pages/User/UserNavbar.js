@@ -13,6 +13,9 @@ function UserNavbar() {
             <Nav.Link href="groups">Groups</Nav.Link>
             <Nav.Link href="activity">Activity</Nav.Link>
             <Nav.Link href="child">Child</Nav.Link>
+            <Nav.Link href="specchild">spec child</Nav.Link>
+            <Nav.Link href="addnote">add note</Nav.Link>
+            
           </Nav>
           <Nav>
             <Nav.Link href="/login" onClick={()=>{localStorage.removeItem("refresh_token")}}>Disconnect</Nav.Link>
