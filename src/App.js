@@ -16,6 +16,9 @@ import Group from "./Pages/Admin/Group";
 import AddChildToGroup from "./Pages/Admin/AddchildtoGroup";
 import Activity from "./Pages/Admin/Activity";
 import AddGroup from "./Pages/Admin/CreateGroup";
+import EmpGroup from "./Pages/User/empGroup";
+import EmpActivity from "./Pages/User/empActivity";
+import Empchild from "./Pages/User/empChild";
 import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
@@ -28,13 +31,18 @@ function App() {
           <Route path="/admin/manageGroup" element={<Group />} />
           <Route path="/admin/manageActivity" element={<Activity />} />
 
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/groups" element={<EmpGroup />} />
+          <Route path="/activity" element={<EmpActivity />} />
+          <Route path="/child" element={<Empchild />} />
+
           {
             //remove this
           }
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/registeruser" element={<RegisterUser />} />
-          <Route path="/profile" element={<ProfilePage />} />
+         
           <Route path="/children" element={<ChildListPage />} />
           <Route path="/registerchildren" element={<RegisterChild />} />
           <Route path="/listactivity" element={<ListActivity />} />

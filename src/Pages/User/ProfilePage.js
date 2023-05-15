@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import UserNavbar from "./UserNavbar";
 import axios from "axios";
 
 const ProfilePage = () => {
@@ -21,6 +22,10 @@ const ProfilePage = () => {
   }, []);
 
   return (
+    <div>
+      <UserNavbar/>
+      <br/>
+      <br/>
     <div className="container">
       <div className="row justify-content-center mt-5">
         <div className="col-md-6">
@@ -48,6 +53,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

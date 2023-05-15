@@ -11,7 +11,7 @@ export const Authenticate =  async(formValue,navigate) => {
         if (user =="ADMIN") {
             navigate("/admin/manageUser")
         } else{
-            navigate("/notAdmin")
+            navigate("/profile")
         }
         
         

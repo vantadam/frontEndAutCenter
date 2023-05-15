@@ -5,8 +5,8 @@ import axios from "axios";
 
 function RegisterUser() {
     const [inputs, setInputs] = useState({
-      firstname: "",
-      lastname: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
     });
@@ -49,8 +49,8 @@ function RegisterUser() {
               type="textarea"
               variant="outlined"
               placeholder="firstName"
-              name="firstname"
-              value={inputs.firstname}
+              name="firstName"
+              value={inputs.firstName}
               onChange={handleChange}
               required
             /><br/>
@@ -59,8 +59,8 @@ function RegisterUser() {
               type="textarea"
               variant="outlined"
               placeholder="Last name"
-              name="lastname"
-              value={inputs.lastname}
+              name="lastName"
+              value={inputs.lastName}
               onChange={handleChange}
               required
             /><br/>
